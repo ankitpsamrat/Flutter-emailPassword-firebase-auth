@@ -1,17 +1,17 @@
-// ignore_for_file: unnecessary_new, library_private_types_in_public_api
+// ignore_for_file: unnecessary_new, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '/model/user_model.dart';
-import '/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '/model/user_model.dart';
+import '/screens/home_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
 
   @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
@@ -58,8 +58,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.account_circle),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.account_circle),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "First Name",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -84,8 +84,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.account_circle),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.account_circle),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Second Name",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -113,8 +113,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.mail),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.mail),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -143,8 +143,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.vpn_key),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.vpn_key),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -170,8 +170,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.vpn_key),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.vpn_key),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Confirm Password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -186,12 +186,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       borderRadius: BorderRadius.circular(30),
       color: Colors.redAccent,
       child: MaterialButton(
-        padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-          signUp(emailEditingController.text, passwordEditingController.text);
+          signUp(
+            emailEditingController.text,
+            passwordEditingController.text,
+          );
         },
-        child: Text(
+        child: const Text(
           "SignUp",
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -209,7 +212,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.red,
           ),
@@ -223,7 +226,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           child: Container(
             color: Colors.white,
             child: Padding(
-              padding: EdgeInsets.all(36.0),
+              padding: const EdgeInsets.all(36.0),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -237,33 +240,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    SizedBox(
-                      height: 45,
-                    ),
+                    const SizedBox(height: 45),
                     firstNameField,
-                    SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
                     secondNameField,
-                    SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
                     emailField,
-                    SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
                     passwordField,
-                    SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
                     confirmPasswordField,
-                    SizedBox(
-                      height: 20,
-                    ),
+                    const SizedBox(height: 20),
                     signUpButton,
-                    SizedBox(
-                      height: 15,
-                    ),
+                    const SizedBox(height: 15),
                   ],
                 ),
               ),
@@ -342,7 +331,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     Navigator.pushAndRemoveUntil(
         (context),
         MaterialPageRoute(
-          builder: (context) => HomeScreen(),
+          builder: (context) => const HomeScreen(),
         ),
         (route) => false);
   }

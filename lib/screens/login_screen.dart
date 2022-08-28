@@ -1,16 +1,16 @@
-// ignore_for_file: unnecessary_new, library_private_types_in_public_api
+// ignore_for_file: unnecessary_new, avoid_print
 
-import '/screens/home_screen.dart';
-import '/screens/registration_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '/screens/home_screen.dart';
+import '/screens/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -53,8 +53,8 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.mail),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.mail),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Email",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -83,8 +83,8 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-        prefixIcon: Icon(Icons.vpn_key),
-        contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        prefixIcon: const Icon(Icons.vpn_key),
+        contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Password",
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
@@ -99,12 +99,12 @@ class _LoginScreenState extends State<LoginScreen> {
       borderRadius: BorderRadius.circular(30),
       color: Colors.redAccent,
       child: MaterialButton(
-        padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
           signIn(emailController.text, passwordController.text);
         },
-        child: Text(
+        child: const Text(
           "Login",
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Container(
             color: Colors.white,
             child: Padding(
-              padding: EdgeInsets.all(36.0),
+              padding: const EdgeInsets.all(36),
               child: Form(
                 key: _formKey,
                 child: Column(
@@ -137,37 +137,28 @@ class _LoginScreenState extends State<LoginScreen> {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    SizedBox(
-                      height: 45,
-                    ),
+                    const SizedBox(height: 45),
                     emailField,
-                    SizedBox(
-                      height: 25,
-                    ),
+                    const SizedBox(height: 25),
                     passwordField,
-                    SizedBox(
-                      height: 35,
-                    ),
+                    const SizedBox(height: 35),
                     loginButton,
-                    SizedBox(
-                      height: 15,
-                    ),
+                    const SizedBox(height: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "Don't have an account? ",
-                        ),
+                        const Text("Don't have an account? "),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => RegistrationScreen(),
+                                builder: (context) =>
+                                    const RegistrationScreen(),
                               ),
                             );
                           },
-                          child: Text(
+                          child: const Text(
                             "SignUp",
                             style: TextStyle(
                               color: Colors.redAccent,
@@ -200,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Fluttertoast.showToast(msg: "Login Successful"),
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
+                    builder: (context) => const HomeScreen(),
                   ),
                 ),
               },
