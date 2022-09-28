@@ -112,7 +112,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     //     return null;
     //   },
     //   onSaved: (value) {
-    //     _firstNameController.text = value!;
+    //     _emailController.text = value!;
     //   },
     //   textInputAction: TextInputAction.next,
     //   decoration: InputDecoration(
@@ -142,7 +142,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     //     return null;
     //   },
     //   onSaved: (value) {
-    //     _firstNameController.text = value!;
+    //      _passwordController.text = value!;
     //   },
     //   textInputAction: TextInputAction.next,
     //   decoration: InputDecoration(
@@ -301,7 +301,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         return null;
                       },
                       onSaved: (value) {
-                        _firstNameController.text = value!;
+                        _emailController.text = value!;
                       },
                       textInputAction: TextInputAction.next,
                       icon: Icons.mail,
@@ -325,7 +325,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         return null;
                       },
                       onSaved: (value) {
-                        _firstNameController.text = value!;
+                        _passwordController.text = value!;
                       },
                       textInputAction: TextInputAction.next,
                       icon: Icons.vpn_key,
