@@ -17,197 +17,28 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  // firebase
+  //  firebase
 
   final _auth = FirebaseAuth.instance;
 
-  // string for displaying the error Message
+  //  string for displaying the error Message
 
   String? errorMessage;
 
-  // our form key
+  //  our form key
 
   final _formKey = GlobalKey<FormState>();
 
-  // editing Controller
+  //  text controller
 
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _secondNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  final _firstNameController = TextEditingController();
+  final _secondNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    //first name field
-
-    // final firstNameField = TextFormField(
-    //   autofocus: false,
-    //   controller: _firstNameController,
-    //   keyboardType: TextInputType.name,
-    //   validator: (value) {
-    //     RegExp regex = RegExp(r'^.{3,}$');
-    //     if (value!.isEmpty) {
-    //       return ("First Name cannot be Empty");
-    //     }
-    //     if (!regex.hasMatch(value)) {
-    //       return ("Enter Valid name(Min. 3 Character)");
-    //     }
-    //     return null;
-    //   },
-    //   onSaved: (value) {
-    //     _firstNameController.text = value!;
-    //   },
-    //   textInputAction: TextInputAction.next,
-    //   decoration: InputDecoration(
-    //     prefixIcon: const Icon(Icons.account_circle),
-    //     contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-    //     hintText: "First Name",
-    //     border: OutlineInputBorder(
-    //       borderRadius: BorderRadius.circular(10),
-    //     ),
-    //   ),
-    // );
-
-    //second name field
-
-    // final secondNameField = TextFormField(
-    //   autofocus: false,
-    //   controller: _secondNameController,
-    //   keyboardType: TextInputType.name,
-    //   validator: (value) {
-    //     if (value!.isEmpty) {
-    //       return ("Second Name cannot be Empty");
-    //     }
-    //     return null;
-    //   },
-    //   onSaved: (value) {
-    //     _secondNameController.text = value!;
-    //   },
-    //   textInputAction: TextInputAction.next,
-    //   decoration: InputDecoration(
-    //     prefixIcon: const Icon(Icons.account_circle),
-    //     contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-    //     hintText: "Second Name",
-    //     border: OutlineInputBorder(
-    //       borderRadius: BorderRadius.circular(10),
-    //     ),
-    //   ),
-    // );
-
-    //email field
-
-    // final emailField = TextFormField(
-    //   autofocus: false,
-    //   controller: _emailController,
-    //   keyboardType: TextInputType.emailAddress,
-    //   validator: (value) {
-    //     if (value!.isEmpty) {
-    //       return ("Please Enter Your Email");
-    //     }
-    //     if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
-    //       return ("Please Enter a valid email");
-    //     }
-    //     return null;
-    //   },
-    //   onSaved: (value) {
-    //     _emailController.text = value!;
-    //   },
-    //   textInputAction: TextInputAction.next,
-    //   decoration: InputDecoration(
-    //     prefixIcon: const Icon(Icons.mail),
-    //     contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-    //     hintText: "Email",
-    //     border: OutlineInputBorder(
-    //       borderRadius: BorderRadius.circular(10),
-    //     ),
-    //   ),
-    // );
-
-    //password field
-
-    // final passwordField = TextFormField(
-    //   autofocus: false,
-    //   controller: _passwordController,
-    //   obscureText: true,
-    //   validator: (value) {
-    //     RegExp regex = RegExp(r'^.{6,}$');
-    //     if (value!.isEmpty) {
-    //       return ("Password is required for login");
-    //     }
-    //     if (!regex.hasMatch(value)) {
-    //       return ("Enter Valid Password(Min. 6 Character)");
-    //     }
-    //     return null;
-    //   },
-    //   onSaved: (value) {
-    //      _passwordController.text = value!;
-    //   },
-    //   textInputAction: TextInputAction.next,
-    //   decoration: InputDecoration(
-    //     prefixIcon: const Icon(Icons.vpn_key),
-    //     contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-    //     hintText: "Password",
-    //     border: OutlineInputBorder(
-    //       borderRadius: BorderRadius.circular(10),
-    //     ),
-    //   ),
-    // );
-
-    //confirm password field
-
-    // final confirmPasswordField = TextFormField(
-    //   autofocus: false,
-    //   controller: _confirmPasswordController,
-    //   obscureText: true,
-    //   validator: (value) {
-    //     if (_confirmPasswordController.text != _passwordController.text) {
-    //       return "Password don't match";
-    //     }
-    //     return null;
-    //   },
-    //   onSaved: (value) {
-    //     _confirmPasswordController.text = value!;
-    //   },
-    //   textInputAction: TextInputAction.done,
-    //   decoration: InputDecoration(
-    //     prefixIcon: const Icon(Icons.vpn_key),
-    //     contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-    //     hintText: "Confirm Password",
-    //     border: OutlineInputBorder(
-    //       borderRadius: BorderRadius.circular(10),
-    //     ),
-    //   ),
-    // );
-
-    //signup button
-
-    // final signUpButton = Material(
-    //   elevation: 5,
-    //   borderRadius: BorderRadius.circular(30),
-    //   color: Colors.redAccent,
-    //   child: MaterialButton(
-    //     padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-    //     minWidth: MediaQuery.of(context).size.width,
-    //     onPressed: () {
-    //       signUp(
-    //         emailEditingController.text,
-    //         passwordEditingController.text,
-    //       );
-    //     },
-    //     child: const Text(
-    //       "SignUp",
-    //       textAlign: TextAlign.center,
-    //       style: TextStyle(
-    //         fontSize: 20,
-    //         color: Colors.white,
-    //         fontWeight: FontWeight.bold,
-    //       ),
-    //     ),
-    //   ),
-    // );
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -294,7 +125,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         if (value!.isEmpty) {
                           return ("Please Enter Your Email");
                         }
-                        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                        if (!RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                             .hasMatch(value)) {
                           return ("Please Enter a valid email");
                         }
